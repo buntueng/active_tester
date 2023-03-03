@@ -7,6 +7,7 @@ import os
 import yaml
 from yaml.loader import SafeLoader
 import logging
+import time
 
 current_path = Path(__file__).resolve().parents[0]
 experiments_path = Path(current_path,'experiments')
@@ -44,17 +45,24 @@ main_window.wm_attributes('-fullscreen', 'True')
 
 main_thai_font = customtkinter.CTkFont(family='TH Niramit AS', size=30)
 main_eng_font = customtkinter.CTkFont(family='TH Niramit AS', size=20)
+timer_font = customtkinter.CTkFont(family='TH Niramit AS', size=40)
 test_font = font.Font(family='TH Niramit AS', size='120', weight='bold')
 
 home_frame = tk.Frame(main_window)
 test_frame = tk.Frame(main_window)
 
 message_label = tk.StringVar()
+timer_display = tk.StringVar()
 # ===========================================================================================
 main_state = 0
-terminate_loop = False
+state_timer = None
+start_time = None
+timeout_ms = 10000        # set timeout = 10 second
 test_param = None
 test_result = []
+
+def current_millis():
+    return round(time.time() * 1000)
 
 def change_background():
    test_frame.config(background='red')
@@ -69,61 +77,89 @@ def show_test_frame():
    test_frame.config(background='#FFFFFF')
    home_frame.pack_forget()
 
+def show_result_frame():
+   pass
+
 def start_button_pressed():
    global main_state
-   global terminate_loop
    global test_param
-
-   
 
    test_param_path = Path(current_path,"experiments")
    test_param_path = Path(test_param_path,select_exp_option.get())
    param_file_obj = open(test_param_path,"r",encoding="utf-8")
    test_param = param_file_obj.readlines()
-   show_test_frame()
    main_state = 0
-   terminate_loop = False
+   show_test_frame()
    run_state()
 
 
 def run_state():
    global main_state
-   global terminate_loop
    global test_param
    global test_result
    global config_params
+   global state_timer
+   global start_time
+   global timeout_ms
+   global timer_display
+   logging.debug(main_state)
    if main_state == 0:
+      main_window.after(1000,run_state)
       message_label.set("การทดสอบจะเริ่มใน \n 5 วินาที")
       main_state = 1
+
    elif main_state == 1:
+      main_window.after(1000,run_state)
       message_label.set("การทดสอบจะเริ่มใน \n 4 วินาที")
       main_state = 2
+
    elif main_state == 2:
+      main_window.after(1000,run_state)
       message_label.set("การทดสอบจะเริ่มใน \n 3 วินาที")
       main_state = 3
+      
    elif main_state == 3:
+      main_window.after(1000,run_state)
       message_label.set("การทดสอบจะเริ่มใน \n 2 วินาที")
       main_state = 4
+      
    elif main_state == 4:
       message_label.set("การทดสอบจะเริ่มใน \n 1 วินาที")
       main_state = 5
-   elif main_state == 5:
-      main_state = 6
-      terminate_loop = True
-      current_color,current_text = test_param[0].strip().split(",")
-      test_frame.config(background=current_color)
-      test_label.config(background=current_color)
-      message_label.set(current_text)
-
-   if not terminate_loop:
       main_window.after(1000,run_state)
-   else:
-      logging.debug("Exit test")
-
+   elif main_state == 5:
+      main_window.after(10,run_state)
+      state_timer = 0
+      main_state = 6
+      
+   elif main_state == 6:
+      main_window.after(50,run_state)
+      if len(test_param) > 0:
+         current_color,current_text = test_param[0].strip().split(",")
+         test_frame.config(background=current_color)
+         test_label.config(background=current_color)
+         timer_label.config(background=current_color)
+         message_label.set(current_text)
+         test_param.pop(0)
+         start_time = current_millis()
+         main_state = 7
+      else:
+         main_state = 8
+      
+   elif main_state == 7:
+      timer_display.set(str(current_millis()-start_time))
+      if (current_millis()-start_time) >= timeout_ms:
+         # record timeout
+         main_state = 6
+      # if serial.available():
+      #  process data
+      main_window.after(50,run_state)
+   elif main_state == 8:
+      pass
    
 # ======== home frame ======================================================================
 config_params = read_yml(yml_config_path)
-logging.debug(config_params)
+# logging.debug(config_params)
 exp_selectable = os.listdir(experiments_path)
 if len(exp_selectable) > 0:
    select_exp_var = customtkinter.StringVar(value=exp_selectable[0])
@@ -148,7 +184,9 @@ start_button.grid(row=1,column=0,columnspan=2,pady=(20,50))
 
 #======== test frame ===============================================================
 test_label = tk.Label(master=test_frame,textvariable = message_label,font=test_font,background='#FFFFFF')
+timer_label = tk.Label(master=test_frame,textvariable = timer_display,font=timer_font,background='#FFFFFF')
 test_label.place(relx=0.5, rely=0.5,anchor=tk.CENTER)
+timer_label.place(relx=0.97, rely=0.97,anchor=tk.SE)
 show_home_frame()
 
 #============== add events =======================================================
