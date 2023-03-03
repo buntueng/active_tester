@@ -1,3 +1,67 @@
 03-Mar-23 02:15:25 - DEBUG - {'color_map': "R:'red' G:'green' B:'blue'"}
 03-Mar-23 02:17:05 - DEBUG - R:'red' G:'green' B:'blue'
 03-Mar-23 02:17:47 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:18:13 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:18:43 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:19:00 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:19:35 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:20:02 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:20:24 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:20:34 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:21:01 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:22:34 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:29:00 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:29:24 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:29:54 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:30:21 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:30:57 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:31:51 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:33:07 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:33:32 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:33:59 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:34:14 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:34:40 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:41:33 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:42:07 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:42:13 - DEBUG - Exit test
+03-Mar-23 19:42:23 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:42:31 - DEBUG - Exit test
+03-Mar-23 19:51:00 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:51:48 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:52:20 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:53:00 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:54:11 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:54:36 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:54:42 - DEBUG - 3
+03-Mar-23 19:54:42 - DEBUG - R,收举
+
+03-Mar-23 19:54:42 - DEBUG - Exit test
+03-Mar-23 19:56:52 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 19:56:59 - DEBUG - 3
+03-Mar-23 19:56:59 - DEBUG - R,收举
+
+03-Mar-23 19:56:59 - DEBUG - Exit test
+03-Mar-23 19:57:53 - DEBUG - {'color': "R:'red' G:'green' B:'blue'"}
+03-Mar-23 19:57:59 - DEBUG - 3
+03-Mar-23 19:57:59 - DEBUG - R,收举
+
+03-Mar-23 19:57:59 - DEBUG - Exit test
+03-Mar-23 20:00:46 - DEBUG - {'color': "R:'red' G:'green' B:'blue'"}
+03-Mar-23 20:00:52 - DEBUG - Exit test
+03-Mar-23 20:03:27 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:04:40 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:04:45 - DEBUG - Exit test
+03-Mar-23 20:05:11 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:05:17 - DEBUG - Exit test
+03-Mar-23 20:05:37 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:05:43 - DEBUG - Exit test
+03-Mar-23 20:11:10 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:11:16 - DEBUG - Exit test
+03-Mar-23 20:11:29 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:11:35 - DEBUG - Exit test
+03-Mar-23 20:12:01 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:12:07 - DEBUG - Exit test
+03-Mar-23 20:14:02 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:14:08 - DEBUG - Exit test
+03-Mar-23 20:14:22 - DEBUG - R:'red' G:'green' B:'blue'
+03-Mar-23 20:14:29 - DEBUG - Exit test
