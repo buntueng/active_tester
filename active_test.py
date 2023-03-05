@@ -189,7 +189,7 @@ def run_state():
       if (current_millis()-start_time) >= timeout_ms:
          # record timeout
          main_state = 6
-      if serial.inWaiting():
+      if serial_port.inWaiting():
          pass
       #  process data
       main_window.after(10,run_state)
@@ -236,8 +236,11 @@ main_window.bind('<Escape>', lambda e: main_window.destroy())
 
 # =========== initial widgets =================
 list_available_port = list_serial_ports()
+# logging.debug(list_available_port)
 if len(list_available_port)<=0:
    list_available_port = ['']
-select_comport_option['values'] = list_available_port
+else:
+   select_comport_option.configure(values= list_available_port)
+   select_comport_option.set(list_available_port[0])
 
 main_window.mainloop()
