@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import font,ttk
 import customtkinter
-from pathlib import Path
+# from pathlib import Path
 import os
 import logging
 import time
@@ -10,20 +10,21 @@ import sys
 import serial
 import glob
 from tkinter import filedialog
-from tkinter.filedialog import asksaveasfile
+# from tkinter.filedialog import asksaveasfile
 import csv
 
-current_path = Path(__file__).resolve().parents[0]
-experiments_path = Path(current_path,'experiments')
-results_path = Path(current_path,'results')
-yml_config_path = Path(current_path, 'config.yml')
-logging_file_path = Path(current_path, 'log_app.log')
+# current_path = Path(__file__).resolve().parents[0]
+# experiments_path = Path(current_path,'experiments')
+# results_path = Path(current_path,'results')
+# yml_config_path = Path(current_path, 'config.yml')
+# logging_file_path = Path(current_path, 'log_app.log')
 #===================== setup logging module =========================================================================
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 logging_format = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
-fileHandler = logging.FileHandler(filename=logging_file_path)
+# fileHandler = logging.FileHandler(filename=logging_file_path)
+fileHandler = logging.FileHandler(filename='./log_app.log')
 fileHandler.setFormatter(logging_format)
 logger.addHandler(fileHandler)
 
@@ -83,7 +84,7 @@ select_comport_var = tk.StringVar()
 main_state = 0
 state_timer = None
 start_time = None
-timeout_ms = 1000        # set timeout = 10 second
+timeout_ms = 10000        # set timeout = 10 second
 test_param = None
 test_result = []
 current_color = ""
@@ -120,8 +121,9 @@ def start_button_pressed():
    global test_param
 
    if select_comport_option.get() != "" and select_exp_option.get() != "":
-      test_param_path = Path(current_path,"experiments")
-      test_param_path = Path(test_param_path,select_exp_option.get())
+      # test_param_path = Path(current_path,"experiments")
+      # test_param_path = Path(test_param_path,select_exp_option.get())
+      test_param_path = "./experiments/" + select_exp_option.get()
       param_file_obj = open(test_param_path,"r",encoding="utf-8")
       test_param = param_file_obj.readlines()
       main_state = 0
@@ -259,7 +261,8 @@ def run_state():
          result_treeview.insert('', 'end',values=show_value_tuple)
    
 # ======== home frame ======================================================================
-exp_selectable = os.listdir(experiments_path)
+# exp_selectable = os.listdir(experiments_path)
+exp_selectable = os.listdir("./experiments")
 if len(exp_selectable) > 0:
    select_exp_var = customtkinter.StringVar(value=exp_selectable[0])
 else:
@@ -300,7 +303,7 @@ exit_button = customtkinter.CTkButton(master=main_result_frame, text="ปิด�
 
 style = ttk.Style(main_result_frame)
 # set ttk theme to "clam" which support the fieldbackground option
-style.theme_use("clam")
+#style.theme_use("clam")
 style.configure("Treeview.Heading", background="#FFFFFF",font=main_thai_font)
 style.configure("Treeview", background="#FFFFFF",font=main_thai_font,rowheight=33)
 
